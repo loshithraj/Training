@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url_for('index') }}" class="text-success">Events</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ event.name }}</li>
+                </ol>
+            </nav>
+
+            <div class="card p-4 shadow-sm">
+                <h1 class="text-primary-neon mb-3 fw-bold">{{ event.name }}</h1>
+                <div class="mb-4">
+                    <span class="badge bg-outline-primary me-2 px-3 py-2 border"><i class="fas fa-calendar me-1"></i> {{
+                        event.date.strftime('%B %d, %Y') }}</span>
+                    <span class="badge bg-outline-info text-white px-3 py-2 border"><i
+                            class="fas fa-map-marker-alt me-1"></i> {{
+                        event.location }}</span>
+                    <span class="badge bg-secondary ms-2 px-3 py-2"><i class="fas fa-users me-1"></i> {{
+                        event.registered_students }} Enrolled</span>
+                </div>
+
+                <h4 class="fw-bold">About this event</h4>
+                <p class="lead" style="white-space: pre-wrap;">{{ event.description }}</p>
+
+                <hr class="my-4">
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <a href="{{ url_for('register', event_id=event.id) }}" class="btn btn-primary btn-lg px-5">Register
+                        to Participate</a>
+                    <a href="{{ url_for('index') }}" class="btn btn-outline-secondary btn-lg px-4">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

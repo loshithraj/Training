@@ -1,0 +1,32 @@
+from math import gcd
+
+def lcm(a, b):
+    return (a * b) // gcd(a, b)
+
+T = int(input())
+
+while T:
+    T -= 1
+    n = int(input())
+    pattern = list(map(int, input().split()))
+    
+    turn = 1
+    pos = 0
+
+    while pos < n:
+        if pattern[pos] != 0:
+            cur_turn = 0
+            start = pos
+
+            while pattern[pos] != 0:
+                next_pos = pattern[pos] - 1
+                pattern[pos] = 0
+                pos = next_pos
+                cur_turn += 1
+
+            if cur_turn > 0:
+                turn = lcm(turn, cur_turn)
+        else:
+            pos += 1
+
+    print(turn)

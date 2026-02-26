@@ -1,0 +1,14 @@
+product = 72
+solutions = []
+
+for a in range(1, 73):
+    for b in range(1, 73):
+        for c in range(1, 73):
+            if a * b * c == product:
+                solutions.append((a, b, c))
+            
+print("All possible combinations:")
+for s in solutions:
+    print(s,"sum:", sum(s))
+
+print("\n Final Answer:(3,3,8)")

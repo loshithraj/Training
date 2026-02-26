@@ -1,0 +1,11 @@
+books = int(input("Enter total number of books: "))
+students = int(input("Enter total number of students: "))
+
+if students == 0:
+    print("Students cannot be zero")
+else:
+    each_student = books // students
+    remaining = books % students
+
+    print("Each student gets:", each_student)
+    print("Remaining books:", remaining)

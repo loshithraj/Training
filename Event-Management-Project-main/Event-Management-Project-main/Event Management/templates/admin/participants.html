@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-1">
+                    <li class="breadcrumb-item"><a href="{{ url_for('admin_dashboard') }}"
+                            class="text-success">Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Participants</li>
+                </ol>
+            </nav>
+            <h1 class="fw-bold">{{ event.name }}</h1>
+            <p class="text-muted"><i class="fas fa-users me-2"></i>{{ participants|length }} registered participants</p>
+        </div>
+        <a href="{{ url_for('admin_dashboard') }}" class="btn btn-outline-secondary">Back to Dashboard</a>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if participants %}
+                        {% for p in participants %}
+                        <tr>
+                            <td>{{ p.id }}</td>
+                            <td class="fw-bold">{{ p.name }}</td>
+                            <td>{{ p.email }}</td>
+                            <td>{{ p.phone }}</td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td colspan="4" class="text-center py-4">No participants registered yet.</td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

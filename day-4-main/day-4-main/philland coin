@@ -1,0 +1,8 @@
+from math import log2, floor
+
+def findMinDenomin(n):
+    return floor(log2(n)) + 1
+
+if __name__ == '__main__':
+    n = 10
+    print(findMinDenomin(n))

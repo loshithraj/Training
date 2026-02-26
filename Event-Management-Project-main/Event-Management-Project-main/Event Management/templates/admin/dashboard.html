@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="fw-bold">Admin Dashboard</h1>
+        <a href="{{ url_for('add_event') }}" class="btn btn-success"><i class="fas fa-plus me-2"></i>Create New
+            Event</a>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="row g-4 mb-5 text-center">
+        <div class="col-md-4">
+            <div class="stats-box blue shadow-sm">
+                <h3>{{ total_events }}</h3>
+                <span>Total Events</span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="stats-box teal shadow-sm">
+                <h3>{{ total_participants }}</h3>
+                <span>Total Participants</span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="stats-box indigo shadow-sm">
+                <h3>{{ most_popular_event.name if most_popular_event else 'N/A' }}</h3>
+                <span>Most Popular Event</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <h4 class="neon-title mb-4">Manage Events</h4>
+            <div class="table-responsive">
+                <table class="table table-neon table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Event Name</th>
+                            <th>Date</th>
+                            <th>Location</th>
+                            <th>Participants</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if events %}
+                        {% for event in events %}
+                        <tr>
+                            <td>{{ event.id }}</td>
+                            <td class="fw-bold">{{ event.name }}</td>
+                            <td>{{ event.date.strftime('%Y-%m-%d') }}</td>
+                            <td>{{ event.location }}</td>
+                            <td>
+                                <span class="badge bg-secondary">{{ event.participants.count() }}</span>
+                                <a href="{{ url_for('view_participants', id=event.id) }}"
+                                    class="view-list-link ms-2 small">View
+                                    List</a>
+                            </td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    <a href="{{ url_for('edit_event', id=event.id) }}"
+                                        class="btn btn-edit-neon">Edit</a>
+                                    <form action="{{ url_for('delete_event', id=event.id) }}" method="POST"
+                                        class="d-inline" onsubmit="return confirm('Delete this event?');">
+                                        <button type="submit" class="btn btn-delete-neon">Delete</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td colspan="6" class="text-center py-4">No events found. Start by creating one!</td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

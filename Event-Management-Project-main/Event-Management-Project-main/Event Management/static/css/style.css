@@ -1,0 +1,300 @@
+:root {
+    --bg-dark: #050505;
+    --bg-card: #121212;
+    --primary-neon: #00f2ff;
+    --secondary-neon: #7000ff;
+    --accent-purple: #bc13fe;
+    --text-glow: 0 0 10px rgba(0, 242, 255, 0.5);
+    --button-glow: 0 0 15px rgba(112, 0, 255, 0.4);
+    --text-white: #ffffff;
+    --text-muted: #fcf6f6;
+    --border-glow: 1px solid rgba(255, 255, 255, 0.1);
+    --danger-neon: #ff0055;
+    --cyan-glow: 0 0 15px rgba(0, 242, 255, 0.7);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(circle at top right, #1a0b2e, #050505 50%),
+        radial-gradient(circle at bottom left, #0d1b2a, #050505 50%);
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+    background-color: rgba(18, 18, 18, 0.8) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: var(--border-glow);
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    color: var(--primary-neon) !important;
+    text-shadow: var(--text-glow);
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    color: var(--text-white) !important;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--primary-neon) !important;
+    text-shadow: var(--text-glow);
+}
+
+/* Hero Section */
+.hero-section {
+    background: transparent;
+    padding: 120px 0;
+    text-align: center;
+    position: relative;
+}
+
+.hero-section h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    background: linear-gradient(to right, var(--primary-neon), var(--secondary-neon));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Cards */
+.card {
+    background: var(--bg-card);
+    border: var(--border-glow);
+    border-radius: 20px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgb(109, 171, 182), 0 0 20px rgba(0, 242, 255, 0.1);
+    border-color: rgba(0, 242, 255, 0.3);
+}
+
+.card-title {
+    color: var(--primary-neon);
+    text-shadow: var(--text-glow);
+}
+
+/* Fix card text visibility */
+.card p,
+.card .card-text,
+.card small,
+.card span {
+    color: #ffffff !important;
+}
+
+/* Dashboard Stats */
+.stats-box {
+    padding: 2.5rem;
+    border-radius: 24px;
+    position: relative;
+    border: var(--border-glow);
+    transition: transform 0.3s;
+}
+
+.stats-box:hover {
+    transform: scale(1.05);
+}
+
+.stats-box.blue {
+    background: linear-gradient(135deg, #0d47a1 0%, #1a73e8 100%);
+    box-shadow: 0 0 20px rgba(13, 71, 161, 0.4);
+}
+
+.stats-box.teal {
+    background: linear-gradient(135deg, #004d40 0%, #00897b 100%);
+    box-shadow: 0 0 20px rgba(0, 77, 64, 0.4);
+}
+
+.stats-box.indigo {
+    background: linear-gradient(135deg, #311b92 0%, #512da8 100%);
+    box-shadow: 0 0 20px rgba(49, 27, 146, 0.4);
+}
+
+.stats-box h3 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.stats-box span {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 12px;
+    padding: 12px 28px;
+    font-weight: 700;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--secondary-neon), var(--accent-purple));
+    border: none;
+    box-shadow: var(--button-glow);
+}
+
+
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(112, 0, 255, 0.6);
+    background: linear-gradient(45deg, var(--accent-purple), var(--secondary-neon));
+}
+
+.btn-danger {
+    background: transparent;
+    border: 2px solid var(--danger-neon);
+    color: var(--danger-neon);
+}
+
+.btn-danger:hover {
+    background: var(--danger-neon);
+    color: white;
+    box-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
+}
+
+.btn-outline-primary {
+    border: 2px solid var(--primary-neon);
+    color: var(--primary-neon);
+}
+
+.btn-outline-primary:hover {
+    background: var(--primary-neon);
+    color: var(--bg-dark);
+    box-shadow: var(--text-glow);
+}
+
+/* Tables */
+.table {
+    color: var(--text-white);
+    background: var(--bg-card);
+    border-radius: 20px;
+}
+
+.table thead th {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--primary-neon);
+    border-bottom: 2px solid rgba(0, 242, 255, 0.2);
+    padding: 1.5rem;
+}
+
+.table tbody tr {
+    background: var(--bg-card) !important;
+}
+
+.table tbody td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    color: #0f0e0ee8 !important;
+}
+
+/* Forms */
+.form-control {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.87);
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.form-control:focus {
+    background: rgba(236, 235, 235, 0.05);
+    border-color: var(--primary-neon);
+    box-shadow: var(--text-glow);
+    color: var(--primary-neon);
+}
+
+/* Badges */
+.badge {
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-weight: 600;
+}
+
+/* Footer */
+.footer {
+    background: transparent;
+    border-top: var(--border-glow);
+    color: var(--text-muted);
+    padding: 60px 0;
+}
+
+/* Alerts */
+.alert {
+    background: var(--bg-card);
+    border: 1px solid var(--primary-neon);
+    color: var(--primary-neon);
+    border-radius: 15px;
+}
+
+/* Neon Admin Section */
+.neon-title {
+    color: var(--primary-neon) !important;
+    text-shadow: var(--cyan-glow);
+    font-weight: 800;
+}
+
+.table-neon thead th {
+    color: var(--primary-neon) !important;
+    text-shadow: var(--cyan-glow);
+    border-bottom: 2px solid var(--primary-neon) !important;
+}
+
+.table-neon tbody td {
+    color: #162f3f !important;
+}
+
+.view-list-link {
+    color: #00897b !important;
+    /* Blue-ish teal */
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.view-list-link:hover {
+    text-decoration: underline;
+    color: var(--primary-neon) !important;
+}
+
+/* Specific button styles for admin table */
+.btn-edit-neon {
+    border: 2px solid var(--primary-neon);
+    color: var(--primary-neon);
+    background: transparent;
+}
+
+.btn-edit-neon:hover {
+    background: var(--primary-neon);
+    color: var(--bg-dark);
+    box-shadow: var(--cyan-glow);
+}
+
+.btn-delete-neon {
+    border: 2px solid var(--danger-neon);
+    color: var(--danger-neon);
+    background: transparent;
+}
+
+.btn-delete-neon:hover {
+    background: var(--danger-neon);
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 0, 85, 0.6);
+}
